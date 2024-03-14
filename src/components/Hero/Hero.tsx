@@ -1,4 +1,3 @@
-import { BrowserRouter } from "react-router-dom";
 import { Container } from "./styles";
 import { AnimatePresence } from "framer-motion";
 import Illustration from "../../assets/illustration.svg";
