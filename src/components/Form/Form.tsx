@@ -20,7 +20,6 @@ export function Form() {
   useEffect(() => {
     if (state.succeeded) {
       toast.success('Email successfully sent!', {
-        position: toast.POSITION.BOTTOM_LEFT,
         pauseOnFocusLoss: false,
         closeOnClick: true,
         hideProgressBar: false,
