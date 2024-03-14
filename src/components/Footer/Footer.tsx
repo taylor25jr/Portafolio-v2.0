@@ -1,13 +1,38 @@
-import { Container } from './styles'
-import reactIcon from '../../assets/react-icon.svg'
-import linkedin from '../../assets/linkedin.svg'
-import githubIcon from '../../assets/github.svg'
-import whatsapp from '../../assets/whatsapp.svg'
-import telegram from '../../assets/telegram.svg'
-import instagramIcon from '../../assets/instagram.svg'
-// import discordIcon from '../../assets/discord.png'
+import { Container } from "./styles";
+import reactIcon from "../../assets/react-icon.svg";
+import linkedin from "../../assets/linkedin.svg";
+import githubIcon from "../../assets/github.svg";
+import whatsapp from "../../assets/whatsapp.svg";
+import telegram from "../../assets/telegram.svg";
+import instagramIcon from "../../assets/instagram.svg";
+import { Link } from "react-router-dom";
+
 
 export function Footer() {
+  const routes: object = {
+    githubLink: "https://github.com/taylor25jr",
+    whatsappLink:
+      "https://api.whatsapp.com/send?phone=3008559576&text=hola,soy luis",
+    linkedinLink:
+      "https://www.linkedin.com/in/luis-david-ferrer-conde-a5582a1b7/",
+    telegramLink: "https://t.me/taylor25jr",
+    instagramLink: "https://www.instagram.com/luistaylorjr/",
+  };
+
+  const {
+    githubLink,
+    linkedinLink,
+    whatsappLink,
+    telegramLink,
+    instagramLink,
+  } = routes as {
+    githubLink: string;
+    linkedinLink: string;
+    whatsappLink: string;
+    telegramLink: string;
+    instagramLink: string;
+  };
+
   return (
     <Container className="footer">
       <p className="logo">
@@ -20,42 +45,22 @@ export function Footer() {
         </p>
       </div>
       <div className="social-media">
-        <a
-          href="https://www.linkedin.com/in/codevinayak"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <Link to={linkedinLink} target="_blank" rel="noreferrer">
           <img src={linkedin} alt="Linkedin" />
-        </a>
-        <a
-          href="https://github.com/CodeVinayak/"
-          target="_blank"
-          rel="noreferrer"
-        >
+        </Link>
+        <Link to={githubLink} target="_blank" rel="noreferrer">
           <img src={githubIcon} alt="GitHub" />
-        </a>
-        <a
-          href="https://api.whatsapp.com/send/?phone=%2B919630576848&text=Hello+Vinayak"
-          target="_blank"
-          rel="noreferrer"
-        >
+        </Link>
+        <Link to={whatsappLink} target="_blank" rel="noreferrer">
           <img src={whatsapp} alt="Whatsapp" />
-        </a>
-        <a
-          href="https://t.me/CodeVinayak"
-          target="_blank"
-          rel="noreferrer"
-        >
+        </Link>
+        <Link to={telegramLink} target="_blank" rel="noreferrer">
           <img src={telegram} alt="telegram" />
-        </a>
-        <a
-          href="https://www.instagram.com/vinayaksingh.in"
-          target="_blank"
-          rel="noreferrer"
-        >
+        </Link>
+        <Link to={instagramLink} target="_blank" rel="noreferrer">
           <img src={instagramIcon} alt="Instagram" />
-        </a>
+        </Link>
       </div>
     </Container>
-  )
+  );
 }
