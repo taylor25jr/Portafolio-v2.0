@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const Container = styled.main`
   position: relative;
   z-index: 0;
-  padding: 20px;
+  padding: 30px;
   width: 100% !important;
   overflow-x: hidden;
   #tsparticles{

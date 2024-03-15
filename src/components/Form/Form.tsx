@@ -1,82 +1,82 @@
-import { Container, ContainerSucces } from './styles'
-import { useForm, ValidationError } from '@formspree/react'
-import { toast, ToastContainer } from 'react-toastify'
-import { useEffect, useState } from 'react'
-import validator from 'validator'
+import { Container } from './styles'
+import { useForm } from '../../hooks/useForm';
+
 
 export function Form() {
-  const [state, handleSubmit] = useForm('xknkpqry')
-  const [validEmail, setValidEmail] = useState(false)
-  const [message, setMessage] = useState('')
-  function verifyEmail(email: string) {
-    if (validator.isEmail(email)) {
-      setValidEmail(true)
-    } else {
-      setValidEmail(false)
+
+  const intialForm = {
+    email: "",
+    comments: "",
+  };
+  
+  const validation = (form: object) : object => {
+    const errors: object = {};
+    const regexEmail  = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
+    const regexComments = /^.{1,255}$/;
+
+    if (!form.email.trim()) {
+      errors.email = "El campo email es requerido";
+    } else if (!regexEmail.test(form.email.trim())) {
+      errors.email = "El campo email es incorrecto";
     }
-  }
-  useEffect(() => {
-    if (state.succeeded) {
-      toast.success('Email successfully sent!', {
-        pauseOnFocusLoss: false,
-        closeOnClick: true,
-        hideProgressBar: false,
-        toastId: 'succeeded',
-      })
+
+    if (!form.comments.trim()) {
+      errors.comments = "El campo comentarios es requerido";
+    } else if (!regexComments.test(form.comments.trim())) {
+      errors.comments = "El campo comentarios solo acepta 255 caracteres";
     }
-  })
-  if (state.succeeded) {
-    return (
-      <ContainerSucces>
-        <h3>Thanks for getting in touch!</h3>
-        <button
-          onClick={() => {
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-          }}
-        >
-          Back to the top
-        </button>
-        <ToastContainer />
-      </ContainerSucces>
-    )
-  }
+    return errors;
+  };
+
+  const {
+    form,
+    errors,
+    loading,
+    response,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+  } = useForm(intialForm, validation);
+  
   return (
     <Container>
-      <h2>Get in touch using the form</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          placeholder="Email"
-          id="email"
-          type="email"
-          name="email"
-          onChange={(e) => {
-            verifyEmail(e.target.value)
-          }}
-          required
-        />
-        <ValidationError prefix="Email" field="email" errors={state.errors} />
-        <textarea
-          required
-          placeholder="Send a message to get started."
-          id="message"
-          name="message"
-          onChange={(e) => {
-            setMessage(e.target.value)
-          }}
-        />
-        <ValidationError
-          prefix="Message"
-          field="message"
-          errors={state.errors}
-        />
-        <button
-          type="submit"
-          disabled={state.submitting || !validEmail || !message}
-        >
-          Submit
-        </button>
-      </form>
-      <ToastContainer />
+      <div className="container__form">
+        <form className="container__form__form" onSubmit={handleSubmit}>
+          {loading &&
+          (
+            <>
+              <h1 className="container__form__title">Escribeme</h1>
+              <label htmlFor="email">Correo electronico</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Escribe tu email"
+                onChange={handleChange}
+                value={form.email}
+                onBlur={handleBlur}
+                required
+              />
+              {errors.email && <p className="errorAlert">{errors.email}</p>}
+              <br />
+              <label htmlFor="comments">Comentarios</label>
+              <textarea
+                name="comments"
+                placeholder="Escribe tus comentarios"
+                value={form.comments}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                required
+              ></textarea>
+              {errors.comments && (
+                <p className="errorAlert">{errors.comments}</p>
+              )}
+              <button type="submit" className="submitButton">
+                Enviar
+              </button>
+            </>
+          )}
+        </form>
+      </div>
     </Container>
-  )
+  );
 }
