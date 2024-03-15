@@ -14,7 +14,7 @@ export const Container = styled.header`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   z-index: 1000;
 
   nav{
@@ -114,6 +114,17 @@ export const Container = styled.header`
   }
 
   @media only screen and (max-width: 800px) {
+    .active{
+      display: flex;
+      justify-content: center;
+    width: 100%;
+
+    }
+
+    .header-fixed{
+      width: 100% !important;
+    }
+
     label {
     position: relative;
    }

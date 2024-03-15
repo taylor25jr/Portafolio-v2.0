@@ -1,5 +1,5 @@
 import { Container } from "./styles";
-import taylor from "../../assets/Taylor.png";
+import taylor from "../../assets/Taylor.webp";
 import sass from "../../assets/sass.svg";
 import htmlIcon from "../../assets/html-icon.svg";
 import cssIcon from "../../assets/css-icon.svg";
@@ -139,7 +139,7 @@ export function About() {
             initial={{ opacity: 0, y: -50 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ opacity: 0, y: -20 }}
-            style={{ borderRadius: "50%", height: "850px", opacity: "0.6" }}
+            style={{ borderRadius: "50%", opacity: "0.6" }}
             src={taylor}
             alt="Vinayak Singh"
             className="imgAbout"

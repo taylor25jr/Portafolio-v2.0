@@ -60,7 +60,6 @@ export const Container = styled.section`
     .about-image {
       max-width: 100%;
       margin-top: 4rem;
-      height: 450px;
     }
     .imgAbout {
       margin-top: 2rem;
@@ -81,10 +80,9 @@ export const Container = styled.section`
     .hard-skills {
       justify-content: center;
     }
-    .fAVEDL .about-image {
+    .about-image {
       max-width: 100%;
-      margin-top: 4rem;
-      height: 350px;
+      margin-top: 6rem !important;
     }
     .imgAbout {
       margin-top: 2rem;
@@ -108,11 +106,9 @@ export const Container = styled.section`
     .about-image {
       max-width: 100%;
       margin-top: 4rem;
-      height: 550px !important;
     }
     .imgAbout {
       margin-top: 2rem;
-      width: 450px !important;
       height: 100% !important;
       filter: grayscale(0);
       transition: filter 0.5s;

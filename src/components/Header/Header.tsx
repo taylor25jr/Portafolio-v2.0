@@ -1,7 +1,7 @@
 import { Container } from "./styles";
 import { NavHashLink, HashLink } from "react-router-hash-link";
 import { useState } from "react";
-import Resume from "../../assets/Vinayak_Kumar_Singh_Resume.pdf";
+import Resume from "../../assets/Profile.pdf";
 
 export function Header() {
   const [isActive, setActive] = useState(false);

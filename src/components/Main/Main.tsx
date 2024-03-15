@@ -18,7 +18,7 @@ import boostrapIcon from "../../assets/bootstrap-icon.svg";
 
 export function Main() {
   return (
-    <Container>
+    <Container className="tsContainer">
       <Particles
         id="tsparticles"
         options={{
