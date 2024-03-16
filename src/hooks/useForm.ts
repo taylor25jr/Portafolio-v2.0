@@ -1,16 +1,27 @@
 import React, { useState } from "react";
 import { helpHttp } from "../Helper/helpHttp";
 
+interface FormState {
+  form: object; 
+  errors: object; 
+  loading: boolean;
+  response: boolean;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => void;
+  handleBlur: (event: React.FocusEvent<HTMLInputElement> | React.FocusEvent<HTMLTextAreaElement>) => void;
+  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void; 
+}
+
+
 export const useForm = (
   initialForm: object,
   validations: (form: object) => object
-): object => {
+) => {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
-  const [response, setResponse] = useState(Boolean);
+  const [response, setResponse] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setForm({
       ...form,
@@ -18,7 +29,7 @@ export const useForm = (
     });
   };
 
-  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement> | React.FocusEvent<HTMLTextAreaElement>) => {
     handleChange(e);
     setErrors(validations(form));
   };
@@ -31,11 +42,13 @@ export const useForm = (
       setLoading(true);
       helpHttp()
         .post("https://formsubmit.co/ajax/luisdavidferrerconde@gmail.com", {
+          method:"POST",
           body: form,
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
           },
+          signal:new AbortSignal,
         })
         .then(() => {
           setLoading(false);
@@ -50,23 +63,15 @@ export const useForm = (
     }
   };
 
-  const returned: {
-    form: object;
-    errors: object;
-    loading: boolean;
-    response: boolean;
-    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    handleBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
-    handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  } = {
+  const returned: FormState = {
     form,
-    errors,
-    loading,
+    errors, 
+    loading, 
     response,
     handleChange,
     handleBlur,
     handleSubmit,
-  };
+  } 
 
   return returned;
 };

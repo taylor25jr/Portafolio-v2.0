@@ -2,9 +2,15 @@ import { Container } from './styles'
 import { useForm } from '../../hooks/useForm';
 
 
+interface FormData {
+  email: string;
+  comments: string;
+}
+
+
 export function Form() {
 
-  const intialForm = {
+  const initialForm: FormData = {
     email: "",
     comments: "",
   };
@@ -15,7 +21,7 @@ export function Form() {
     const regexComments = /^.{1,255}$/;
 
     if (!form.email.trim()) {
-      errors.email = "El campo email es requerido";
+     errors.email = "El campo email es requerido";
     } else if (!regexEmail.test(form.email.trim())) {
       errors.email = "El campo email es incorrecto";
     }
@@ -28,15 +34,8 @@ export function Form() {
     return errors;
   };
 
-  const {
-    form,
-    errors,
-    loading,
-    response,
-    handleChange,
-    handleBlur,
-    handleSubmit,
-  } = useForm(intialForm, validation);
+  const { form, errors, loading, response, handleChange, handleBlur, handleSubmit } = useForm(initialForm, validation);
+
   
   return (
     <Container>
@@ -77,6 +76,7 @@ export function Form() {
           )}
         </form>
       </div>
+      {response}
     </Container>
   );
 }
