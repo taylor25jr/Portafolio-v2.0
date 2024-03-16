@@ -80,7 +80,7 @@ export const GlobalStyle = createGlobalStyle`
     color: #FFFF;
   }
 
-  body, input, textarea, button{
+  body, input, textarea, button, label{
     font-family: 'Red Hat Display', sans-serif;
     font-weight: 400;
   }
@@ -115,4 +115,4 @@ export const GlobalStyle = createGlobalStyle`
     //   color: var(--green);
     // }
   }
-`
+`;
