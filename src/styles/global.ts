@@ -1,6 +1,13 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
+
+  body{
+    width: 100% !important;
+  }
+
+
+
   :root{
     --pink: #E31F71;
     --black: #212121;

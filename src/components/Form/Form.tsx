@@ -45,7 +45,7 @@ export function Form() {
     <Container>
       <div className="container__form">
         <form className="container__form__form" onSubmit={handleSubmit}>
-          <h1 className="container__form__title">Send me an email</h1>
+          <h1 className="container__form__title">Get in touch</h1>
           <label htmlFor="email">Email</label>
           <input
             type="email"

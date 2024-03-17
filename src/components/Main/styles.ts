@@ -13,14 +13,12 @@ export const Container = styled.main`
     width: 100% !important;
     height: 100%;
     z-index: -1;
-    background-color: #2f2f2f;
   }
 
   @media (max-width: 740px) {
     padding: 0 4rem;
     .tsContainer {
       padding: 30px;
-      width: 100% !important;
     }
   }
 

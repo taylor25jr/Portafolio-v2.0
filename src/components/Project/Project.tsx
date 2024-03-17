@@ -122,7 +122,7 @@ export function Project() {
               <h3>Lorem Shop</h3>
               <p>
                 This website sells electronics products. This page was made
-                using JAvascript, Html and Bootstrap css.
+                using Javascript, Html and Bootstrap css.
               </p>
             </div>
             <footer>
