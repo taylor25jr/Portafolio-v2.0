@@ -37,7 +37,7 @@ export function Project() {
             <div className="body">
               <h3>Drummer House</h3>
               <p>
-                This website is SPA whichs contain information about a drummer.
+                This website is SPA which contain information about a drummer.
                 this page was made using React.js, ReactRouter-Dom and some Css
                 libraries
               </p>
@@ -80,7 +80,7 @@ export function Project() {
             <div className="body">
               <h3>ORG</h3>
               <p>
-                This website is a SPA whichs allows you create teams for work.
+                This website is a SPA which allows you create teams for work.
               </p>
             </div>
             <footer>

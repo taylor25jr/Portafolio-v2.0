@@ -93,6 +93,7 @@ export const Container = styled.div`
     box-sizing: border-box;
     /* Esto hace que el padding no afecte el ancho total */
     font-size: 16px;
+    color: white;
   }
 
   ::placeholder {
@@ -114,6 +115,7 @@ export const Container = styled.div`
     border: 1px solid white;
     /* Permite cambiar solo la altura vertical */
     resize: none;
+    color: white;
   }
   .submitButton {
     display: flex;
